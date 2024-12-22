@@ -4,6 +4,7 @@
 * body {
     font-family: 'Poppins', sans-serif;
     padding: 0;
+    margin:0;
     background-color: #f4f4f9;
     color: #333;
 }
@@ -42,7 +43,6 @@ h1 {
     font-size: large;
     font-weight: 800;
 }
-
 
 
 .container {
@@ -342,7 +342,7 @@ footer p {
     text-decoration: none;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .footer-content {
         flex-direction: column;
     }
@@ -350,7 +350,7 @@ footer p {
     .social-links {
         margin-top: 10px;
     }
-}
+} */
 
 
 /****** About Page Styling ******/
@@ -448,11 +448,11 @@ p {
     color: #555555;
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
     .grid-container {
         grid-template-columns: 1fr;
     }
-}
+} */
 
 
 
@@ -581,7 +581,7 @@ p {
 }
 
 /* Responsive Design */
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
     .gpa-grid {
         grid-template-columns: 1fr 1fr; 
     }
@@ -589,7 +589,7 @@ p {
     .timeline-container {
         padding-left: 20px;
     }
-}
+} */
 
 
                                 /****** Skills page styling ******/
@@ -787,11 +787,11 @@ p {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .certifications {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
-}
+} */
 
 
 
