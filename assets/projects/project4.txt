@@ -1,0 +1,5 @@
+Hello World!
+Project 4: E-Commerce App
+A comprehensive online shopping platform with real-time cart updates and a user-friendly interface.
+This project demonstrates the use of Pyton, Django, AWS, HTML, and CSS to 
+auction an item and make payment, and also admin access to add, update, and remove products dynamically.

@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Projects</title>
-        <link rel="stylesheet" href="assets/css/styles.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
 <body>
     <nav class="navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Dehinde Shogbanmu</a>
+            <a class="navbar-brand" href="index.html">DS</a>
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
@@ -22,53 +22,67 @@
         </div>
     </nav>
 
-    <header class="skills">
+    <header class="skills welcome-section">
         <h2>Projects</h2>
+        <p class="intro">A showcase of my past projects</p>
     </header>
 
-    <!-- Projects Section -->
-
     <section>
-        <p class="lead">A showcase of my past projects</p>
         <div class="accordion-container">
             <!-- Project 1 -->
             <div class="accordion-item">
-                <button class="accordion-button">Project 1: The MoonKeys Website</button>
+                <button class="accordion-button">Project 1: The MonKees Website</button>
                 <div class="accordion-content">
                     <img src="assets/images/project1.png" alt="Project 1">
-                    <p>This project utilizes machine learning to detect fake blogs and news articles.</p>
+                    <p>This project utilizes machine learning to detect fake blogs 
+                        and news articles. It combines natural language processing (NLP) 
+                        techniques with sentiment analysis to enhance accuracy.
+                    </p>
+                    <div class="button-container">
+                        <a href="https://github.com/dennyshow/first-milestone-project" class="btn" target="_blank">GitHub</a>
+                        <a href="https://dennyshow.github.io/first-milestone-project/index.html" class="btn" target="_blank">Live Demo</a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Project 2 -->
             <div class="accordion-item">
                 <button class="accordion-button">Project 2: London Bus Data Dashboard</button>
                 <div class="accordion-content">
                     <img src="assets/images/project2.png" alt="Project 2">
-                    <p>A weather forecasting application with real-time data integration.</p>
+                    <p>A Data Dashboard interactive application with data integration
+                        for London Bus Transport SPA. Built using HTML, CSS and 
+                        JavaScript and includes visualizations 
+                        for different options selected.
+                    </p>
+                    <div class="button-container">
+                        <a href="https://github.com/dennyshow/milestone-project-2" class="btn" target="_blank">GitHub</a>
+                        <a href="https://dennyshow.github.io/milestone-project-2/" class="btn" target="_blank">Live Demo</a>
+                    </div>
                 </div>
             </div>
-
-            <!-- Project 3 -->
+            
             <div class="accordion-item">
-                <button class="accordion-button">Project 3: Fetch API Demo</button>
+                <button class="accordion-button">Project 3: Payroll Management System</button>
                 <div class="accordion-content" id="project3-content">
-                    <button onclick="fetchProjectDetails('project3')">Load Project Details</button>
+                    <button onclick="fetchProjectDetailsFromTxt('project3')" target="_blank">Load Project Details</button>
                     <p id="project3-text"></p>
                 </div>
             </div>
 
             <!-- Project 4 -->
             <div class="accordion-item">
-                <button class="accordion-button">Project 4: E-Commerce App</button>
-                <div class="accordion-content">
-                    <img src="assets/images/project1.png" alt="E-Commerce App">
-                    <p>An online shopping platform with a seamless user experience.</p>
+                <button class="accordion-button">
+                    Project 4: E-Commerce App
+                </button>
+                <div class="accordion-content" id="project4-content">
+                    <button onclick="fetchProjectDetailsFromTxt('project4')">
+                        Load Project Details
+                    </button>
+                    <p id="project4-text"></p>
                 </div>
             </div>
         </div>
     </section>
-    
 
     <footer>
         <div class="footer-container">

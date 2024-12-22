@@ -1,0 +1,5 @@
+Project 3: PayRoll Management System
+A payroll application with real-time employee entry, updates and removal. 
+With Login, Register and Logout Functionality.
+This project was demonstrated the use of SvelteJS, JavaScript, HTML, and CSS to 
+retrieve and display data dynamically.

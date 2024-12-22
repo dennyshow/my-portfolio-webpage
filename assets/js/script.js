@@ -14,72 +14,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to update the carousel slide position
     const updateSlide = () => {
-        const totalImages = carouselImages.children.length; // Total number of images
+        const totalImages = carouselImages.children.length;
         if (totalImages === 0) {
             console.error("No images found in the carousel.");
             return;
         }
-        carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`; // Adjust the transform property to show the current image
+        // Adjust the transform property to show the current image
+        carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
     };
 
     // Function to slide to the next image
+    // Move to the next image (looping back to the start if necessary)
     const slideNext = () => {
         const totalImages = carouselImages.children.length;
-        currentIndex = (currentIndex + 1) % totalImages; // Move to the next image (looping back to the start if necessary)
+        currentIndex = (currentIndex + 1) % totalImages;
         updateSlide();
     };
 
     // Function to slide to the previous image
+    // Move to the previous image (looping to the last if necessary)
     const slidePrev = () => {
         const totalImages = carouselImages.children.length;
-        currentIndex = (currentIndex - 1 + totalImages) % totalImages; // Move to the previous image (looping to the last if necessary)
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
         updateSlide();
     };
 
     // Automatic sliding functionality
-    const slideInterval = 3000; // Time between slides (in milliseconds)
-    let autoSlide = setInterval(slideNext, slideInterval); // Start the automatic sliding
+    // Time between slides (in milliseconds)
+    const slideInterval = 3000;
+    let autoSlide = setInterval(slideNext, slideInterval);
 
     // Add event listeners for manual controls
     nextButton.addEventListener('click', () => {
-        clearInterval(autoSlide); // Stop automatic sliding on manual interaction
+        clearInterval(autoSlide);
         slideNext();
-        autoSlide = setInterval(slideNext, slideInterval); // Restart the automatic sliding
+        autoSlide = setInterval(slideNext, slideInterval);
     });
 
     prevButton.addEventListener('click', () => {
-        clearInterval(autoSlide); // Stop automatic sliding on manual interaction
+        clearInterval(autoSlide); 
         slidePrev();
-        autoSlide = setInterval(slideNext, slideInterval); // Restart the automatic sliding
+        autoSlide = setInterval(slideNext, slideInterval); 
     });
 });
 
-
-
-
-// Fetch API for dynamic project details
-function fetchProjectDetails(projectId) {
-    const content = document.getElementById(`${projectId}-text`);
-    fetch('assets/projects/project1.json') // Assume this file contains project descriptions
-        .then(response => response.json())
-        .then(data => {
-            content.textContent = data[projectId];
-        })
-        .catch(error => {
-            content.textContent = "Failed to load project details. Please try again.";
-            console.error("Error fetching project details:", error);
-        });
-}
-
-// Accordion toggle functionality
-document.querySelectorAll('.accordion-button').forEach(button => {
-    button.addEventListener('click', () => {
-        const content = button.nextElementSibling;
-
-        // Toggle active state
-        content.classList.toggle('active');
-    });
-});
 
 document.addEventListener('DOMContentLoaded', () => {
     // Select all skills with the class 'skill'
@@ -87,9 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Iterate through each skill element
     skills.forEach(skill => {
-        const progressBar = skill.querySelector('.progress');  // Get the progress bar inside the skill
-        const percentageText = progressBar.querySelector('.percentage'); // Select the percentage text
-        const progressWidth = progressBar.style.width;         // Get the initial width (from the inline style)
+        const progressBar = skill.querySelector('.progress');
+        const percentageText = progressBar.querySelector('.percentage');
+        const progressWidth = progressBar.style.width;
 
         // Initialize progress bar width to 0% and hide the percentage text
         progressBar.style.width = '0%';
@@ -102,28 +80,94 @@ document.addEventListener('DOMContentLoaded', () => {
         skill.addEventListener('mouseenter', () => {
             // On hover, smoothly animate to the desired width
             progressBar.style.transition = 'width 1s ease-in-out';
-            progressBar.style.width = progressWidth;  // Set it back to the original width
+            progressBar.style.width = progressWidth; 
 
             // Show the percentage and animate its value
             if (percentageText) {
-                percentageText.style.transition = 'opacity 1s ease-in-out'; // Smooth transition for opacity
-                percentageText.style.display = 'block';  // Make the percentage visible
-                percentageText.textContent = progressWidth;  // Set percentage text based on width
+                percentageText.style.transition = 'opacity 1s ease-in-out';
+                percentageText.style.display = 'block'; 
+                percentageText.textContent = progressWidth;
             }
         });
 
         // Add mouseleave event to reset the progress bar to 0% when hover ends
         skill.addEventListener('mouseleave', () => {
             // On mouse leave, animate the progress back to 0%
-            progressBar.style.transition = 'width 0.5s ease-out';  // Faster transition on mouse leave
+            progressBar.style.transition = 'width 0.5s ease-out'; 
             progressBar.style.width = '0%';
 
             // Hide the percentage text
             if (percentageText) {
-                percentageText.style.transition = 'opacity 0.5s ease-out'; // Fade out the percentage text
-                percentageText.style.display = 'none';  // Hide the percentage text
-                percentageText.textContent = '0%';  // Reset the percentage text to 0%
+                percentageText.style.transition = 'opacity 0.5s ease-out';
+                percentageText.style.display = 'none'; 
+                percentageText.textContent = '0%'; 
             }
         });
     });
 });
+
+
+
+// Accordion toggle functionality
+document.querySelectorAll('.accordion-button').forEach(button => {
+    button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+
+        // Toggle active state
+        content.classList.toggle('active');
+    });
+});
+
+
+// fetch text content stored locally in a txt file
+function fetchProjectDetailsFromTxt(projectId) {
+    const content = document.getElementById(`${projectId}-text`);
+
+    // Map project IDs to their corresponding local file paths
+    const localFiles = {
+        project3: "assets/projects/project3.txt",
+        project4: "assets/projects/project4.txt",
+    };
+
+    const filePath = localFiles[projectId];
+    if (!filePath) {
+        content.textContent = "Invalid project ID. Cannot fetch details.";
+        return;
+    }
+
+    fetch(filePath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(data => {
+            content.textContent = data;
+        })
+        .catch(error => {
+            content.textContent = "Failed to load project details. Please try again.";
+            console.error("Error fetching project details:", error);
+        });
+}
+
+// Google Maps Function
+
+function initMap() {
+    // Define the location (latitude, longitude)
+    var location = { lat: 52.836529, lng: -6.937332 };
+
+    // Create a map centered at the specified location
+    var map = new google.maps.Map(document.getElementById("map"), {
+        center: location,
+        zoom: 14,  // Adjust zoom level as needed
+    });
+
+    // Create a marker at the specified location
+    var marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        title: "Carlow, Ireland",
+    });
+}
+
